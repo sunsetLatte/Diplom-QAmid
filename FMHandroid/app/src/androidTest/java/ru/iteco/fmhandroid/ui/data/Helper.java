@@ -1,5 +1,7 @@
 package ru.iteco.fmhandroid.ui.data;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static ru.iteco.fmhandroid.ui.data.Data.SQL;
 import static ru.iteco.fmhandroid.ui.data.Data.XSS;
 import static ru.iteco.fmhandroid.ui.data.Data.emptyLogin;
@@ -15,6 +17,8 @@ import static ru.iteco.fmhandroid.ui.data.Data.unregPassword;
 import android.os.IBinder;
 import android.view.WindowManager;
 import androidx.test.espresso.Root;
+import androidx.test.espresso.ViewInteraction;
+
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
@@ -83,5 +87,8 @@ public class Helper {
             }
             return false;
         }
+    }
+    public ViewInteraction toast(int id) {
+        return onView(withText(id)).inRoot(new Helper.ToastMatcher());
     }
 }
