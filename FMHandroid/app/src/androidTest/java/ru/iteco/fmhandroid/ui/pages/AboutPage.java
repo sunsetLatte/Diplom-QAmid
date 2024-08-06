@@ -7,10 +7,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import androidx.test.espresso.ViewInteraction;
 
 public class AboutPage {
-    private final ViewInteraction headerPage = onView(withText("About"));
+    private final ViewInteraction headerPage = onView(withText("Version:"));
 
     public void checkHeaderPage() {
         headerPage.check(matches(isDisplayed()));
-        headerPage.check(matches(withText("About")));
+        headerPage.check(matches(withText("Version:")));
     }
 }

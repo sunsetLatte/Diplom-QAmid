@@ -10,14 +10,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.data.Data;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 
 import static org.hamcrest.core.IsNot.not;
-
 import static ru.iteco.fmhandroid.ui.common.TestUtils.waitDisplayed;
-
 import androidx.test.espresso.ViewInteraction;
+
+import static ru.iteco.fmhandroid.ui.data.Data.login;
+import static ru.iteco.fmhandroid.ui.data.Data.password;
 
 public class BaseSteps {
 
@@ -35,7 +37,15 @@ public class BaseSteps {
         logOutButton.perform(click());
     }
 
+    public void logIn() {
 
+        try {
+            onView(isRoot()).perform(waitDisplayed(R.id.trademark_image_view, 20_000));
+        } catch (Exception e) {
+            authPage.authValidLoginAndPass(Helper.authInfo());
+            authPage.signIn();
+        }
+    }
 
     public void checkToast(int id, boolean visible) {
         if (visible) {

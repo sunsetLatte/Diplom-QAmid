@@ -31,6 +31,12 @@ import ru.iteco.fmhandroid.ui.data.Helper;
 
 public class AuthorizationPage {
 
+    private final ViewInteraction headerPage = onView(withText("News"));
+    public void checkHeaderPage() {
+        headerPage.check(matches(isDisplayed()));
+        headerPage.check(matches(withText("News")));
+    }
+
     public void validatePageLoaded() {
         loginInputText.check(matches(isDisplayed()));
         passwordInputText.check(matches(isDisplayed()));

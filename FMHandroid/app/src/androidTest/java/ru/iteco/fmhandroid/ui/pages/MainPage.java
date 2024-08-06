@@ -27,6 +27,7 @@ public class MainPage {
     private final ViewInteraction expandMaterialButton = onView(withId(R.id.expand_material_button));
     private final ViewInteraction allNewsButton = onView(withId(R.id.all_news_text_view));
 
+
     private final ViewInteraction buttonToMainPage = onView(
             allOf(withId(android.R.id.title), withText("Main"),
                     isDisplayed()));

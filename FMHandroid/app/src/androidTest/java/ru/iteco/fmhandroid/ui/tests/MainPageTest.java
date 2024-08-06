@@ -17,6 +17,8 @@ import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
 @LargeTest
 
 public class MainPageTest {
+    BaseSteps baseSteps = new BaseSteps();
+
     private final MainPage mainPage = new MainPage();
     private final NewsPage newsPage = new NewsPage();
     private final OurMissionPage missionPage = new OurMissionPage();
@@ -26,7 +28,10 @@ public class MainPageTest {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
-
+    @Before
+    public void setUp() {
+        baseSteps.logIn();
+    }
 
     @Test    //    Сворачивание/разворачивание новостей на главном экране
     public void testDropDawnNewsBlock() {
@@ -38,7 +43,6 @@ public class MainPageTest {
 
     @Test    //     Переход с Главной на экран с новостями через кнопку "Все новости"
     public void navigatingllNewsButton() {
-
         mainPage.clickAllNewsButton();
         newsPage.checkHeaderPage();
         pressBack();
@@ -58,5 +62,7 @@ public class MainPageTest {
         mainPage.goToAboutPage();
         aboutPage.checkHeaderPage();
         pressBack();
+
+        baseSteps.logOut();
     }
 }
